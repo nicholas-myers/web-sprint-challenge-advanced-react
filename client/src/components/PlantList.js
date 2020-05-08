@@ -36,6 +36,22 @@ export default class PlantList extends Component {
     this.setState({
       find: e.target.value.toLowerCase(),
     });
+    let newArray = this.state.plants.filter((plant) => {
+      let plantName = plant.name.toLowerCase();
+      if (plantName.includes(this.state.find)) {
+        return plant;
+      }
+    });
+    // console.log(newArray)
+    if (this.state.find !== "") {
+      this.setState({
+        filteredPlants: newArray
+      }) 
+    } else if (this.state.find === "") {
+        this.setState({
+          filteredPlants: this.state.plants
+        })
+      }
   }
 
   findPlants = (e) => {
