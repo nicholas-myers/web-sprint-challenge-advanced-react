@@ -31,8 +31,10 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 1. Explain how to build stateful class components.-
 
 -setup a constructor with super
+
 constructor()
   super()
+
 -set up state with the "this" key word into a single object. 
 
 this.state = {
@@ -41,15 +43,15 @@ this.state = {
 
 -use this.setState - to change the state as needed
 
--pass state through props as needed
+-pass state through props as needed this.props = this.state
 
 2. Describe the different phases of the component lifecycle.
 
--the birth of the component,mounting phase, the initial data is set up and invoked with render being the view as a function of state set up through a constructor.
+-The birth of the component/mounting phase: is where the initial data is set up and invoked with render being the view as a function of state set up through a constructor.
 
--the life of the component-update phase, this is where state is changed through this.setstate and a re-render occurs
+-The life of the component/update phase: is where state is changed through this.setstate and a re-render occurs
 
--death /unmounting phase - when the component is removed from the DOM, a cleanup process for event listeners and resetting state
+-The death/unmounting phase: is a cleanup process where the component is removed from the DOM, event listeners are removed and/or state is reset.
 
 3. Demonstrate an understanding of class component lifecycle methods.
 
@@ -61,11 +63,11 @@ if(prevState !== currentState)
 
 4. Define stateful logic.
 
-any time you set up state in a component, this is done with a callback method. this.setState - it can be other functions as well that make any change to the current state. this state change causes renders to the DOM and follows a flow.
+Any time you set up state in a component. This is done with a callback method. By using `this.setState` or other functions as well that make any change to the current state. This state change causes renders to the DOM and follows a flow.
 
 5. Describe how to test a React component with React Testing Library.
 
-testing checks to see if our code is working the way that it should, you set up the test to make sure that elements exist and check when things change that the component is working as intended. there are three things needed to set up
+Testing checks to see if our code is working the way that it should, you set up the test to make sure that elements exist and check when things change that the component is working as intended. There are three things needed to set up:
 
 arrange- check that there is an element
 act- make a change or fire an event
@@ -141,7 +143,7 @@ _Note: You built a useForm hook in the guided project this week. You will probab
 #### Testing the Checkout Form
 
 - [x] Build out the tests listed in `CheckoutForm.test.js`. You will need to make sure they are testing what the test title implies they are testing
-- [ ] Make sure the tests are passing, and make sure you can cause the tests to fail purposefully, so that you know the tests are truly working
+- [x] Make sure the tests are passing, and make sure you can cause the tests to fail purposefully, so that you know the tests are truly working
 
 <hr/>
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
