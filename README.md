@@ -111,8 +111,8 @@ _Please follow the setup instructions closely so that you can get everything up 
 
 **Commit and Push OFTEN!**
 
-- [ ] Implement the project on this Branch, **committing progress & changes often.**
-- [ ] Push commits: `git push origin <firstName-lastName>`.
+- [x] Implement the project on this Branch, **committing progress & changes often.**
+- [x] Push commits: `git push origin <firstName-lastName>`.
 
 ### Task 2: Project Requirements
 
