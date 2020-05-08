@@ -8,6 +8,7 @@ test("form header renders", () => {
   const { getByText } = render(<CheckoutForm />);
 
   const checkoutHeader = getByText(/checkout form/i);
+  expect(checkoutHeader).toBeInTheDocument()
 });
 
 test("form shows success message on submit with form details", () => {

@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 
 export const useForm = initialValue => {
-  // email value ✅
-  // handlechanges should handle all inputs
+
   const [values, setValues] = useState(initialValue);
 
   const handleChanges = (e) => {
