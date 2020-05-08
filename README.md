@@ -28,15 +28,48 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
-1. Explain how to build stateful class components.
+1. Explain how to build stateful class components.-
+
+-setup a constructor with super
+constructor()
+  super()
+-set up state with the "this" key word into a single object. 
+
+this.state = {
+
+}
+
+-use this.setState - to change the state as needed
+
+-pass state through props as needed
 
 2. Describe the different phases of the component lifecycle.
 
+-the birth of the component,mounting phase, the initial data is set up and invoked with render being the view as a function of state set up through a constructor.
+
+-the life of the component-update phase, this is where state is changed through this.setstate and a re-render occurs
+
+-death /unmounting phase - when the component is removed from the DOM, a cleanup process for event listeners and resetting state
+
 3. Demonstrate an understanding of class component lifecycle methods.
+
+-componentDidMount(axios requests and setting the state to the data)
+-componentDidUpdate((prevProps, prevState) = should always have a comparison to the prev state-
+if(prevState !== currentState)
+  useEffect, what you want to happen when the state changes or there is a re-render)
+-componentWillUnmount( clean up the things you don't want on the DOM, event listeners typically)
 
 4. Define stateful logic.
 
+any time you set up state in a component, this is done with a callback method. this.setState - it can be other functions as well that make any change to the current state. this state change causes renders to the DOM and follows a flow.
+
 5. Describe how to test a React component with React Testing Library.
+
+testing checks to see if our code is working the way that it should, you set up the test to make sure that elements exist and check when things change that the component is working as intended. there are three things needed to set up
+
+arrange- check that there is an element
+act- make a change or fire an event
+assert- make sure that it exists
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
