@@ -7,7 +7,7 @@ import CheckoutForm from "./components/CheckoutForm";
 
 import "./App.css";
 
-function App() {
+function App(props) {
   // array of plants that have been added to the cart
   const [cart, setCart] = useState([]);
 
@@ -21,6 +21,14 @@ function App() {
     setCart(cart.filter((p) => p.id !== plant.id));
   };
 
+
+  //stretch to search
+  // const [find, setFind] = useState("")
+
+  // const captureFind = (e) => {
+  //   setFind(e.target.value)
+  // }
+
   return (
     <div>
       <Router>
@@ -28,6 +36,7 @@ function App() {
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
+          
           <ul className="steps">
             <li>
               <NavLink exact to="/">
