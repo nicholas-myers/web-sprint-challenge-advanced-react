@@ -21,7 +21,13 @@ function App(props) {
     setCart(cart.filter((p) => p.id !== plant.id));
   };
 
-  
+
+  //stretch to search
+  // const [find, setFind] = useState("")
+
+  // const captureFind = (e) => {
+  //   setFind(e.target.value)
+  // }
 
   return (
     <div>
@@ -30,6 +36,7 @@ function App(props) {
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
+          
           <ul className="steps">
             <li>
               <NavLink exact to="/">

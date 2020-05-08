@@ -8,6 +8,7 @@ export default class PlantList extends Component {
     this.state = {
       plants: [],
       find: "",
+      filteredPlants: [],
     };
   }
   // when the component mounts:
@@ -22,6 +23,7 @@ export default class PlantList extends Component {
         // console.log(this.props.find)
         this.setState({
           plants: res.data.plantsData,
+          filteredPlants: res.data.plantsData
         });
         // console.log(this.state.plants)
       })
@@ -29,6 +31,33 @@ export default class PlantList extends Component {
         console.log(err);
       });
   }
+
+  captureFind = (e) => {
+    this.setState({
+      find: e.target.value.toLowerCase(),
+    });
+  }
+
+  findPlants = (e) => {
+    e.preventDefault()
+      let newArray = this.state.plants.filter((plant) => {
+        let plantName = plant.name.toLowerCase();
+        if (plantName.includes(this.state.find)) {
+          return plant;
+        }
+      });
+      // console.log(newArray)
+      if (this.state.find !== "") {
+        this.setState({
+          filteredPlants: newArray
+        }) 
+      } else if (this.state.find === "") {
+          this.setState({
+            filteredPlants: this.state.plants
+          })
+        }
+
+  }; //close findPlants
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
@@ -38,16 +67,18 @@ export default class PlantList extends Component {
       <div>
         <form
           id="filterStretch"
-          onSubmit={(e) => {
-            e.preventDefault();
-            // console.log(find)
-          }}
+          onSubmit={this.findPlants}
         >
           <label htmlFor="findPlant">Find Plant:</label>
-          <input name="findPlant" type="text" value={this.state.find} />
+          <input
+            name="findPlant"
+            type="text"
+            value={this.state.find}
+            onChange={this.captureFind}
+          />
         </form>
         <main className="plant-list">
-          {this.state?.plants?.map((plant) => (
+          {this.state?.filteredPlants?.map((plant) => (
             <div className="plant-card" key={plant.id}>
               <img className="plant-image" src={plant.img} alt={plant.name} />
               <div className="plant-details">
