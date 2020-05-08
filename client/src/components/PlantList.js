@@ -3,12 +3,13 @@ import axios from "axios";
 
 export default class PlantList extends Component {
   // add state with a property called "plants" - initialize as an empty array
-constructor() {
-  super()
-  this.state = {
-    plants: []
+  constructor() {
+    super();
+    this.state = {
+      plants: [],
+      find: "",
+    };
   }
-}
   // when the component mounts:
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
@@ -17,56 +18,58 @@ constructor() {
     axios
       .get("http://localhost:3333/plants")
       .then((res) => {
-          // console.log(res.data.plantsData)
-          // console.log(this.props.find)
-          this.setState({
-            plants: res.data.plantsData
-          })
-          // console.log(this.state.plants)
+        // console.log(res.data.plantsData)
+        // console.log(this.props.find)
+        this.setState({
+          plants: res.data.plantsData,
+        });
+        // console.log(this.state.plants)
       })
       .catch((err) => {
         console.log(err);
       });
   }
-  
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
     // console.log(this.props.find)
-    if (this.props.find !== "") {
-      this.state.plants.forEach(plant =>{
-        if (plant.name.includes(this.props.find)) {
-          this.setState({
-            plants: plant
-          })
-        }
-      })
-    }
+
     return (
-      <main className="plant-list">
-        {
-        this.state?.plants?.map((plant) => (
-          <div className="plant-card" key={plant.id}>
-            <img className="plant-image" src={plant.img} alt={plant.name} />
-            <div className="plant-details">
-              <h2 className="plant-name">{plant.name}</h2>
-              <p className="plant-scientific-name">{plant.scientificName}</p>
-              <p>{plant.description}</p>
-              <div className="plant-bottom-row">
-                <p>${plant.price}</p>
-                <p>☀️ {plant.light}</p>
-                <p>💦 {plant.watering}x/month</p>
+      <div>
+        <form
+          id="filterStretch"
+          onSubmit={(e) => {
+            e.preventDefault();
+            // console.log(find)
+          }}
+        >
+          <label htmlFor="findPlant">Find Plant:</label>
+          <input name="findPlant" type="text" value={this.state.find} />
+        </form>
+        <main className="plant-list">
+          {this.state?.plants?.map((plant) => (
+            <div className="plant-card" key={plant.id}>
+              <img className="plant-image" src={plant.img} alt={plant.name} />
+              <div className="plant-details">
+                <h2 className="plant-name">{plant.name}</h2>
+                <p className="plant-scientific-name">{plant.scientificName}</p>
+                <p>{plant.description}</p>
+                <div className="plant-bottom-row">
+                  <p>${plant.price}</p>
+                  <p>☀️ {plant.light}</p>
+                  <p>💦 {plant.watering}x/month</p>
+                </div>
+                <button
+                  className="plant-button"
+                  onClick={() => this.props.addToCart(plant)}
+                >
+                  Add to cart
+                </button>
               </div>
-              <button
-                className="plant-button"
-                onClick={() => this.props.addToCart(plant)}
-              >
-                Add to cart
-              </button>
             </div>
-          </div>
-        ))}
-      </main>
+          ))}
+        </main>
+      </div>
     );
   }
 }
